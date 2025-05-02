@@ -12,25 +12,18 @@ int pemain;
 int main() {
     while(1) {
         cout << "pilih '1' untuk batu \npilih '2' untuk gunting \npilih '3' untuk kertas \nKamu memilih: ";
-        cin >> pemain;
-        int kurangiNomorPemain = pemain - 1;
+        cin >> pemain;;
         srand(time(0));
-        int musuh = rand() %3;
-        int tambahNomorMusuh = musuh + 1;
-        cout << "Musuh memilih: " << tambahNomorMusuh << endl;
-        if(musuh == kurangiNomorPemain) {
+        int musuh = (rand() %3) + 1 ;
+        cout << "Musuh memilih: " << musuh << endl;
+        if(musuh == pemain) {
             cout << "Permainan seri\n";
         }
-        else if (musuh - 1 == kurangiNomorPemain)
+        else if ((musuh - 1 == pemain) || (musuh + 2 == pemain))
         {
             cout << "Selamat anda menang\n";
-        } 
-        else if(musuh < kurangiNomorPemain) {
-            cout << "Selamat anda menang\n";
         }
-        else if(musuh > kurangiNomorPemain) {
-            cout << "Anda kalah\n";
-        }
+        
         else {
             cout << "Anda kalah\n";
         }
