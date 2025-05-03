@@ -1,33 +1,38 @@
 #include <iostream>
 #include <ctime>
 #include <cstdlib>
-#include <cctype>
+#include <string>
 using namespace std;
 
-int batu = 0;
-int gunting = 1;
-int kertas = 2;
-int pemain;
+const string character[3] = {"Batu", "Gunting", "Kertas"};
 
 int main() {
+    short pemainIndex, musuhIndex;
+    string pemain, musuh;
+
     while(1) {
-        cout << "pilih '1' untuk batu \npilih '2' untuk gunting \npilih '3' untuk kertas \nKamu memilih: ";
-        cin >> pemain;
+        cout << "pilih '1' untuk batu \npilih '2' untuk gunting \npilih '3' untuk kertas \n";
+        cin >> pemainIndex;
+        pemain = character[pemainIndex - 1];
 
         srand(time(0));
-        int musuh = (rand() %3) + 1 ;
+        musuhIndex = (rand() %3);
+        musuh = character[musuhIndex];
 
+        cout << "Kamu memilih: " << pemain << endl;
         cout << "Musuh memilih: " << musuh << endl;
 
         if(musuh == pemain) {
             cout << "Permainan seri\n";
-        } else if ((musuh - 1 == pemain) || (musuh + 2 == pemain)) {
+        } else if (
+            (pemain == "Kertas" && musuh == "Batu") ||
+            (pemain == "Batu" && musuh == "Gunting") ||
+            (pemain == "Gunting" && musuh == "Kertas"))
+        {
             cout << "Selamat anda menang\n";
         } else {
             cout << "Anda kalah\n";
         }
-
-        cout << "1 > 2 > 3 > 1 ...\n";
 
         char pengulangan;
         cout << "Apakah kamu mau bermain lagi? [Y/N]\n";
