@@ -6,6 +6,25 @@ using namespace std;
 
 const string character[3] = {"Batu", "Gunting", "Kertas"};
 
+void menentukanHasil(string musuh, string pemain){
+    if(musuh == pemain) {
+        cout << "Permainan seri\n";
+    } else if (
+        (pemain == "Kertas" && musuh == "Batu") ||
+        (pemain == "Batu" && musuh == "Gunting") ||
+        (pemain == "Gunting" && musuh == "Kertas")) 
+    {
+        cout << "Selamat anda menang\n";
+    } else {
+        cout << "Anda kalah\n";
+    }
+}
+
+int angkaAcak(){
+    srand(time(0));
+    return (rand() %3);
+}
+
 int main() {
     short pemainIndex, musuhIndex;
     string pemain, musuh;
@@ -15,24 +34,14 @@ int main() {
         cin >> pemainIndex;
         pemain = character[pemainIndex - 1];
 
-        srand(time(0));
-        musuhIndex = (rand() %3);
+        
+        musuhIndex = angkaAcak();
         musuh = character[musuhIndex];
 
         cout << "Kamu memilih: " << pemain << endl;
         cout << "Musuh memilih: " << musuh << endl;
 
-        if(musuh == pemain) {
-            cout << "Permainan seri\n";
-        } else if (
-            (pemain == "Kertas" && musuh == "Batu") ||
-            (pemain == "Batu" && musuh == "Gunting") ||
-            (pemain == "Gunting" && musuh == "Kertas"))
-        {
-            cout << "Selamat anda menang\n";
-        } else {
-            cout << "Anda kalah\n";
-        }
+        menentukanHasil(musuh, pemain);
 
         char pengulangan;
         cout << "Apakah kamu mau bermain lagi? [Y/N]\n";
