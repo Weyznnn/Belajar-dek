@@ -1,31 +1,31 @@
 #include <iostream>
 using namespace std;
 
-int jumlah, bilangan, banyakBilangan;
-
-int input(int array[], int panjangData) {
+void input(int array[], int panjangData) {
     for(int i = 0; i < panjangData; i++) {
         cout << "Masukkan sebuah bilangan: ";
         cin >> array[i];
-    } return array[panjangData];
+    }
 }
 
-float operasiRataRata (int array[]) {
+float operasiRataRata (int array[], int banyakBilangan) {
+    int jumlah;
     for(int i = 0; i < banyakBilangan; i++) {
         jumlah += array[i];
-    } float hasil = static_cast<float>(jumlah) / static_cast<float>(banyakBilangan);
-    return hasil;
+    } return static_cast<float>(jumlah) / banyakBilangan;
 }
 
 int main() {
-    int data[banyakBilangan];
-
+    int banyakbilangan;
     cout << "masukkan banyak bilangan: ";
-    cin >> banyakBilangan;
+    cin >> banyakbilangan;
 
-    input(&data[banyakBilangan], banyakBilangan);
+    int data[banyakbilangan];
 
-    cout << "Rata-rata dari data tersebut adalah " << operasiRataRata(&data[banyakBilangan]);
+
+    input(data, banyakbilangan);
+
+    cout << "Rata-rata dari data tersebut adalah " << operasiRataRata(data, banyakbilangan);
     
     return 0;
 }
