@@ -28,8 +28,9 @@ int angkaAcak(){
 int main() {
     short pemainIndex, musuhIndex;
     string pemain, musuh;
+    char pengulangan;
 
-    while(1) {
+    do {
         cout << "pilih '1' untuk batu \npilih '2' untuk gunting \npilih '3' untuk kertas \n";
         cin >> pemainIndex;
         pemain = character[pemainIndex - 1];
@@ -43,13 +44,9 @@ int main() {
 
         menentukanHasil(musuh, pemain);
 
-        char pengulangan;
         cout << "Apakah kamu mau bermain lagi? [Y/N]\n";
         cin >> pengulangan;
 
-        if(tolower(pengulangan) == 'n') {
-            break;
-        } 
-
-    } return 0;
+    } while(tolower(pengulangan) == 'y');
+    return 0;
 }
